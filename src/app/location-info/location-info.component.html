@@ -1,0 +1,8 @@
+<h2>{{ location.label }}</h2>
+<pre>{{ location.desc }}</pre>
+<p>
+  <button md-raised-button *ngFor="let tag of location.tag" [disabled]="true">
+    {{ tag }}
+  </button>
+</p>
+<button md-raised-button (click)="dialogRef.close()">Close</button>

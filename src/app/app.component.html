@@ -1,0 +1,38 @@
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
+    <md-input placeholder="Filter locations" #locationFilter></md-input>
+    <button md-raised-button (click)="filterLocations(locationFilter.value)">
+      Filter
+    </button>
+    <md-list-item *ngFor="let location of selected_locations">
+      {{location.label}}
+    </md-list-item>
+    <hr />
+    <md-list>
+      <md-list-item *ngFor="let location of locations">
+        <md-checkbox (change)="toggleItem(location, $event.checked)" [checked]="isSelected(location)"></md-checkbox>{{location.label}}
+      </md-list-item>
+    </md-list>
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    Maps
+  </md-toolbar>
+
+  <div class="app-content">
+    <sebm-google-map
+       [latitude]="lat"
+       [longitude]="lng"
+       [streetViewControl]="false">
+      <sebm-google-map-marker *ngFor="let location of selected_locations"
+                              [latitude]="location.lat"
+                              [longitude]="location.lng"
+                              [label]="location.label"
+                              (markerClick)="markerClicked(location)">
+      </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+</md-sidenav-layout>
