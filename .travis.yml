@@ -15,6 +15,6 @@ script:
   - git config user.email "omniavinco@gmail.com"
   - git config user.name "Gyusun Yeom"
   - git config push.default simple
-  - git remote add origin git@github.com:Perlmint/private_map.git
+  - git remote set-url origin git@github.com:Perlmint/private_map.git
   - git fetch origin
-  - ng ghpages
+  - ng github-pages:deploy
