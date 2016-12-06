@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "6"
+sudo: false
+before_install:
+  - mkdir -p .travis
+  - openssl aes-256-cbc -K $encrypted_479ada022ad8_key -iv $encrypted_479ada022ad8_iv -in deploy_key.pem.enc -out .travis/deploy_key.pem -d
+install:
+  - npm install
+  - npm i -g angular-cli
+script:
+  - chmod 600 .travis/deploy_key.pem
+  - eval `ssh-agent -s`
+  - ssh-add .travis/deploy_key.pem
+  - git config user.email "omniavinco@gmail.com"
+  - git config user.name "Gyusun Yeom"
+  - git config push.default simple
+  - git remote add deploy git@github.com:Perlmint/private_map.git
+  - git fetch deploy
+  - ng github-pages:deploy
