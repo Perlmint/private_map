@@ -36,3 +36,6 @@ Thumbs.db
 
 #Emacs Temporary Files
 *.*~
+
+#Ignore temporary files
+.travis
