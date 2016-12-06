@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "lodash": "registry:npm/lodash#4.0.0+20161015015725"
+  },
+  "globalDependencies": {
+    "isomorphic-fetch": "registry:dt/isomorphic-fetch#0.0.0+20160830175641"
   }
 }
